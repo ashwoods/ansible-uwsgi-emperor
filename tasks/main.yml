@@ -7,6 +7,12 @@
 - include: install-source.yml
   when: uwsgi_install_method == "source"
 
+- name: Add the uwsgi configuration files
+  template: dest=/etc/uwsgi-emperor/emperor.ini
+            src=etc/uwsgi-emperor/emperor.ini
+            owner=root
+            group=www-data
+
 - name: Create apps folder
   file: state=directory
         path={{ uwsgi_vassals_path }}
