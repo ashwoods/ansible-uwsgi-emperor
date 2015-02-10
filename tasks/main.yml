@@ -7,5 +7,11 @@
 - include: install-source.yml
   when: uwsgi_install_method == "source"
 
+- name: Create apps folder
+  file: state=directory
+        path={{ uwsgi_vassals_path }}
+        owner={{ ansible_ssh_user }}
+        group={{ ansible_ssh_user }}
+
 - name: Make sure uwsgi-emperor is running (and runs on boot)
   service: name=uwsgi-emperor state=started enabled=yes

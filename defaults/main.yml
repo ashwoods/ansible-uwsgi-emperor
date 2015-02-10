@@ -1,3 +1,6 @@
 ---
 uwsgi_install_method: pip
+uwsgi_vassals_path: /etc/uwsgi-emperor/vassals
 uwsgi_version: ~
+uwsgi_gid: www-data
+uwsgi_uid: www-data
