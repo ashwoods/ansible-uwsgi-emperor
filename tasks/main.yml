@@ -26,6 +26,11 @@
         path=/var/log/uwsgi
         owner={{ uwsgi_uid }}
         group={{ uwsgi_gid }}
-
+        
+- name: Quickfix systemd bug
+  systemd: name=uwsgi-emperor 
+           enabled=yes
+           state=started
+  
 - name: Make sure uwsgi-emperor is running (and runs on boot)
   service: name=uwsgi-emperor state=started enabled=yes
