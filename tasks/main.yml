@@ -28,9 +28,8 @@
         group={{ uwsgi_gid }}
         
 - name: Quickfix systemd bug
-  systemd: name=uwsgi-emperor 
-           enabled=yes
-           state=started
+  command: systemctl enable uwsgi-emperor
+  become: true
   
 - name: Make sure uwsgi-emperor is running (and runs on boot)
   service: name=uwsgi-emperor state=started enabled=yes
